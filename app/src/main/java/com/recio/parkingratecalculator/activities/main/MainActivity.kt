@@ -3,7 +3,6 @@ package com.recio.parkingratecalculator.activities.main
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.text.format.DateUtils
 import android.view.Window
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -165,13 +164,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.btnCompute.setOnClickListener {
             when {
                 binding.radioButtonCar.isChecked -> {
-                    val relativeTimeStr = DateUtils.getRelativeTimeSpanString(timeInMilliseconds, timeOutMilliseconds, DateUtils.SECOND_IN_MILLIS)
-                    val timeDifference = Integer.parseInt(relativeTimeStr[0].toString())
-                    val additionalHours = timeDifference-2
+                    val secondsInMilli: Long = 1000
+                    val minutesInMilli = secondsInMilli * 60
+                    val hoursInMilli = minutesInMilli * 60
+
+                    val timeDifferenceLong = timeOut.time-timeIn.time
+                    val elapsedHours: Int = (timeDifferenceLong / hoursInMilli).toInt()
+
+                    val additionalHours = elapsedHours-2
                     val additionalFee = additionalHours*carAdditionalRate
                     val totalAmount = carInitialRate + additionalFee
 
-                    val dialogMessage = "Time In: $timeInText\nTime Out: $timeOutText\nHours: $timeDifference\nTotal Amount: $totalAmount"
+                    val dialogMessage = "Time In: $timeInText\nTime Out: $timeOutText\nHours: $elapsedHours\nTotal Amount: $totalAmount"
                     displayParkingFeeDialogBoxMessage(getString(R.string.parking_fee), dialogMessage, getString(R.string.close))
                 }
                 binding.radioButtonMotorcycle.isChecked -> {
@@ -201,15 +205,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
                 }
                 binding.radioButtonEmployeeVehicle.isChecked -> {
-                    val relativeTimeStr = DateUtils.getRelativeTimeSpanString(timeInMilliseconds, timeOutMilliseconds, DateUtils.SECOND_IN_MILLIS)
-                    val timeDifference = Integer.parseInt(relativeTimeStr[0].toString())
-                    val additionalHours = timeDifference-2
+                    val secondsInMilli: Long = 1000
+                    val minutesInMilli = secondsInMilli * 60
+                    val hoursInMilli = minutesInMilli * 60
+
+                    val timeDifferenceLong = timeOut.time-timeIn.time
+                    val elapsedHours: Int = (timeDifferenceLong / hoursInMilli).toInt()
+
+                    val additionalHours = elapsedHours-2
                     val additionalFee = additionalHours*carAdditionalRate
                     val totalAmount = carInitialRate + additionalFee
+
                     val discount = totalAmount*.2
                     val finalAmount = totalAmount-discount
 
-                    val dialogMessage = "Time In: $timeInText\nTime Out: $timeOutText\nHours: $timeDifference\nSubtotal: $totalAmount\nDiscount: $discount\nTotal Amount: $finalAmount"
+                    val dialogMessage = "Time In: $timeInText\nTime Out: $timeOutText\nHours: $elapsedHours\nSubtotal: $totalAmount\nDiscount: $discount\nTotal Amount: $finalAmount"
                     displayParkingFeeDialogBoxMessage(getString(R.string.parking_fee), dialogMessage, getString(R.string.close))
                 }
             }

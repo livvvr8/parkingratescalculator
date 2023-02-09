@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Parking Rate Calculator</string>
+
+    <string name="parking_rate">Parking Rate</string>
+    <string name="calculator">Calculator</string>
+    <string name="select_vehicle_type">Select vehicle type</string>
+    <string name="label_car">Car</string>
+    <string name="label_motorcycle">Motorcycle</string>
+    <string name="label_employee_vehicle">Employee Vehicle</string>
+
+    <string name="time_in">Time In</string>
+    <string name="time_out">Time Out</string>
+    <string name="date_entered">Date Entered</string>
+    <string name="time_entered">Time Entered</string>
+    <string name="date_departed">Date Departed</string>
+    <string name="time_departed">Time Departed</string>
+
+    <string name="compute">Compute</string>
+    <string name="parking_rates">Parking Rates</string>
+    <string name="close">Close</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="error">Error</string>
+    <string name="okay">Okay</string>
+    <string name="parking_fee">Parking Fee</string>
+
+    <string name="label_car_parking_rate">Car Parking Rate: \nPHP 50.00 for the first two hours, additional PHP 10.00 for every preceding hour.</string>
+    <string name="label_motorcycle_parking_rate">Motorcycle Parking Rate: \nPHP 30.00 flat rate from 6 AM to 12 AM, \nadditional PHP 30.00 for every preceding cut off.</string>
+    <string name="label_employee_parking_rate">Employee Parking Rate: \nPHP 50.00 for the first two hours, \nadditional PHP 10.00 for every preceding hour. \nWith 20% discount from the total payment.</string>
+
+    <string name="message_select_time_in_date_first">Please select time in date first.</string>
+    <string name="message_time_out_must_be_after_time_in">Invalid date. Time out date must be after time in date.</string>
+
+    <string name="select_time_in">Select time in</string>
+    <string name="select_time_out">Select time out</string>
+
+    <string name="confirm_exit_dialog_title">Confirm Exit</string>
+    <string name="confirm_exit_dialog_message">Are you sure you want to close the app?</string>
+</resources>
